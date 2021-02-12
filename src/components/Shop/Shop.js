@@ -1,24 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ProductCard from './ProductCard';
 import './Shop.css';
 
-const Shop = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    setProductsFromJson();
-  }, []);
-
-  async function setProductsFromJson() {
-    const res = await fetch('products.json');
-    const data = await res.json();
-    setProducts(data);
-  }
-
+const Shop = (props) => {
   return (
     <div className="product-display">
-      {products.length > 0
-        ? products.map((product) => (
+      {props.products && props.products.length > 0
+        ? props.products.map((product) => (
             <ProductCard
               product={{
                 id: product.id,

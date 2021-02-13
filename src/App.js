@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Shop from './components/Shop/Shop';
+import Product from './components/Shop/Product';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -24,6 +25,11 @@ function App() {
             path="/shop"
             component={() => <Shop products={products} />}
           />
+          <Route
+            exact
+            path="/shop/:id"
+            component={() => <Product getProductById={getProductById} />}
+          />
         </Switch>
       </Router>
     </div>
@@ -33,6 +39,10 @@ function App() {
     const res = await fetch('products.json');
     const data = await res.json();
     setProducts(data);
+  }
+
+  function getProductById(id) {
+    return products.find((product) => product.id == id);
   }
 }
 

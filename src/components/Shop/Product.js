@@ -20,7 +20,16 @@ const Product = (props) => {
           <select value={quantity} onChange={handleQuantityChange}>
             {getNumberOption(10)}
           </select>
-          <button>Add to cart</button>
+          <button
+            onClick={() => {
+              props.handleAddToCart({
+                product: product,
+                quantity: quantity,
+              });
+            }}
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </div>

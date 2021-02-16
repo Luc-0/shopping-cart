@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './Product.css';
 
@@ -16,10 +16,26 @@ const Product = (props) => {
           <p>{product.name}</p>
           <strong>$ {product.price}</strong>
         </div>
+
         <div className="product-cart-add">
-          <select value={quantity} onChange={handleQuantityChange}>
-            {getNumberOption(10)}
-          </select>
+          <div className="product-cart-quantity">
+            <button
+              onClick={() => {
+                handleDecreaseQuantity();
+              }}
+            >
+              -
+            </button>
+            <input value={quantity} onChange={handleQuantityChange} />
+            <button
+              onClick={() => {
+                handleIncreaseQuantity();
+              }}
+            >
+              +
+            </button>
+          </div>
+
           <button
             onClick={() => {
               props.handleAddToCart({
@@ -35,20 +51,28 @@ const Product = (props) => {
     </div>
   );
 
-  function handleQuantityChange(e) {
-    const newValue = e.target.value;
-    setQuantity(newValue);
+  function handleIncreaseQuantity() {
+    const newQuantity = quantity + 1;
+
+    if (newQuantity <= 99) {
+      setQuantity(quantity + 1);
+    }
   }
 
-  function getNumberOption(num) {
-    const options = [];
+  function handleDecreaseQuantity() {
+    const newQuantity = quantity - 1;
+    if (newQuantity >= 1) {
+      setQuantity(newQuantity);
+    }
+  }
 
-    for (let i = 0; i < num; i++) {
-      const option = <option key={i}>{i + 1}</option>;
-      options.push(option);
+  function handleQuantityChange(e) {
+    const newValue = +e.target.value;
+    if (newValue > 99 || newValue < 1) {
+      return;
     }
 
-    return options;
+    setQuantity(newValue);
   }
 };
 

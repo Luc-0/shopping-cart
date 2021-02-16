@@ -8,17 +8,27 @@ nav {
   width: 100%;
 }
 
-ul {
+nav ul {
   display: flex;
   justify-content: space-between;
   width: 20%;
 }
 
-li {
+nav ul li {
   list-style: none;
 }
 
-a {
+nav ul li a {
   color: white;
   text-decoration: none;
+}
+
+.navbar-link {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-link i,
+.navbar-link p {
+  margin: 0 15%;
 }

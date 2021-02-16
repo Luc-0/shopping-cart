@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <nav>
       <h1>Shopping Cart</h1>
@@ -14,7 +14,10 @@ const NavBar = () => {
           <Link to="/shop">Shop</Link>
         </li>
         <li>
-          <Link to="/cart">Cart</Link>
+          <Link to="/cart" className="navbar-link">
+            <i class="fas fa-shopping-cart"></i>
+            <p>{props.itemCount}</p>
+          </Link>
         </li>
       </ul>
     </nav>

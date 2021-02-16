@@ -11,25 +11,30 @@ function App() {
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
+  const [cartItemCount, setCartItemCount] = useState(0);
 
   useEffect(() => {
     setProductsFromJson();
   }, []);
 
   useEffect(() => {
-    let newTotalPrice = cartItems.reduce((totalPrice, currentItem) => {
-      const currentItemPrice = currentItem.product.price * currentItem.quantity;
-      return totalPrice + currentItemPrice;
-    }, 0);
+    let newItemCount = 0;
+    let newTotalPrice = 0;
+
+    cartItems.forEach((item) => {
+      newTotalPrice += item.product.price * item.quantity;
+      newItemCount += item.quantity;
+    });
     newTotalPrice = Math.round((newTotalPrice + Number.EPSILON) * 100) / 100;
 
     setCartTotalPrice(newTotalPrice);
+    setCartItemCount(newItemCount);
   }, [cartItems]);
 
   return (
     <div className="app">
       <Router>
-        <NavBar />
+        <NavBar itemCount={cartItemCount} />
 
         <Switch>
           <Route exact path="/" component={Home} />

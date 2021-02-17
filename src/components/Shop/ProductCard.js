@@ -4,7 +4,10 @@ import './ProductCard.css';
 
 const ProductCard = (props) => {
   return (
-    <Link className="product-card " to={`/shop/${props.product.id}`}>
+    <Link
+      className="product-card "
+      to={`/shopping-cart/shop/${props.product.id}`}
+    >
       <div className="product-card-image">
         <img src={props.product.image} />
       </div>

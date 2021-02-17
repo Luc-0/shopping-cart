@@ -8,13 +8,13 @@ const NavBar = (props) => {
       <h1>Shopping Cart</h1>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/shopping-cart">Home</Link>
         </li>
         <li>
-          <Link to="/shop">Shop</Link>
+          <Link to="/shopping-cart/shop">Shop</Link>
         </li>
         <li>
-          <Link to="/cart" className="navbar-link">
+          <Link to="/shopping-cart/cart" className="navbar-link">
             <i className="fas fa-shopping-cart"></i>
             <p>{props.itemCount}</p>
           </Link>

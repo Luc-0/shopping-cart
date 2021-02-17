@@ -39,15 +39,15 @@ function App() {
 
         {products.length > 0 ? (
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/shopping-cart" component={Home} />
             <Route
               exact
-              path="/shop"
+              path="/shopping-cart/shop"
               component={() => <Shop products={products} />}
             />
             <Route
               exact
-              path="/shop/:id"
+              path="/shopping-cart/shop/:id"
               component={() => (
                 <Product
                   handleAddToCart={handleAddToCart}
@@ -57,7 +57,7 @@ function App() {
             />
             <Route
               exact
-              path="/cart"
+              path="/shopping-cart/cart"
               component={() => (
                 <Cart
                   handleIncreaseQuantity={handleIncreaseQuantity}

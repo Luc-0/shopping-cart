@@ -37,38 +37,42 @@ function App() {
       <Router>
         <NavBar itemCount={cartItemCount} />
 
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route
-            exact
-            path="/shop"
-            component={() => <Shop products={products} />}
-          />
-          <Route
-            exact
-            path="/shop/:id"
-            component={() => (
-              <Product
-                handleAddToCart={handleAddToCart}
-                getProductById={getProductById}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/cart"
-            component={() => (
-              <Cart
-                handleIncreaseQuantity={handleIncreaseQuantity}
-                handleDecreaseQuantity={handleDecreaseQuantity}
-                handleRemoveFromCart={handleRemoveFromCart}
-                handleCartQuantityChange={handleCartQuantityChange}
-                cartItems={[...cartItems]}
-                totalPrice={cartTotalPrice}
-              />
-            )}
-          />
-        </Switch>
+        {products.length > 0 ? (
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/shop"
+              component={() => <Shop products={products} />}
+            />
+            <Route
+              exact
+              path="/shop/:id"
+              component={() => (
+                <Product
+                  handleAddToCart={handleAddToCart}
+                  getProductById={getProductById}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/cart"
+              component={() => (
+                <Cart
+                  handleIncreaseQuantity={handleIncreaseQuantity}
+                  handleDecreaseQuantity={handleDecreaseQuantity}
+                  handleRemoveFromCart={handleRemoveFromCart}
+                  handleCartQuantityChange={handleCartQuantityChange}
+                  cartItems={[...cartItems]}
+                  totalPrice={cartTotalPrice}
+                />
+              )}
+            />
+          </Switch>
+        ) : (
+          <div>Loading...</div>
+        )}
       </Router>
     </div>
   );

@@ -48,7 +48,7 @@ function App() {
             <Route
               exact
               path="/shopping-cart/shop/:id"
-              component={() => (
+              render={() => (
                 <Product
                   handleAddToCart={handleAddToCart}
                   getProductById={getProductById}

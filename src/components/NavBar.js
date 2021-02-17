@@ -15,7 +15,7 @@ const NavBar = (props) => {
         </li>
         <li>
           <Link to="/cart" className="navbar-link">
-            <i class="fas fa-shopping-cart"></i>
+            <i className="fas fa-shopping-cart"></i>
             <p>{props.itemCount}</p>
           </Link>
         </li>

@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Shop from './components/Shop/Shop';
 import Product from './components/Shop/Product';
 import Cart from './components/Cart/Cart';
+import ProductsData from './products.json';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -14,7 +15,7 @@ function App() {
   const [cartItemCount, setCartItemCount] = useState(0);
 
   useEffect(() => {
-    setProductsFromJson();
+    setProducts(ProductsData);
   }, []);
 
   useEffect(() => {
@@ -153,12 +154,6 @@ function App() {
     newCartItems.splice(indexOfItem, 1);
 
     setCartItems(newCartItems);
-  }
-
-  async function setProductsFromJson() {
-    const res = await fetch('products.json');
-    const data = await res.json();
-    setProducts(data);
   }
 
   function getProductById(id) {
